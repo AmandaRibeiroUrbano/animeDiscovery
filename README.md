@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Anime Discovery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é o meu primeiro projeto desenvolvido do zero usando o React Create App. O projeto foi desenvolvido para ser responsivo e acessível, garantindo que todos possam usá-lo com facilidade.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- **Acessibilidade de Cores**: Garantida usando a ferramenta WhoCanUse.
+- **API Pública**: Utiliza a API pública do [Jikan](https://jikan.moe/) para obter dados sobre animes.
+- **Acessibilidade por Teclado**: Garantida utilizando `tabIndex="0"` em elementos que não são acessíveis por padrão no HTML.
+- **3 Páginas com React Router**: O aplicativo utiliza o React Router para navegação entre as páginas.
 
-### `npm start`
+## Páginas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Página Inicial**: A porta de entrada para o usuário, onde é possível começar a explorar animes.
+- **Página de Filtros**: O usuário pode escolher suas preferências de animes para gerar uma lista personalizada.
+- **Página de Lista de Animes**: Exibe os animes filtrados para o usuário.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnologias Utilizadas
 
-### `npm test`
+- **React**: Biblioteca JavaScript para construção da interface do usuário.
+- **React Router**: Biblioteca para navegação entre páginas.
+- **Jikan API**: API pública para obtenção de dados sobre animes.
+- **CSS**: Estilização do aplicativo.
+- **Acessibilidade**: Foco na criação de uma interface acessível.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Como Rodar o Projeto
 
-### `npm run build`
+Para rodar o projeto localmente, siga os seguintes passos:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 1. Clone este repositório:
+   ```bash
+   git clone https://github.com/AmandaRibeiroUrbano/animeDiscovery.git
+```
+# 2. Navegue até o diretório do projeto:
+   ```bash
+cd animeDiscovery
+```
+# 3. Instale as dependências
+   ```bash
+npm install
+```
+# 4. Inicie o servidor de desenvolvimento
+  ```bash
+npm start
+```
+# 5 Acesse no navegador
+ Abra o seu navegador de preferência e acesse http://localhost:3000
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Licença
+Este projeto está licenciado sob a licença MIT - consulte o arquivo LICENSE para mais detalhes.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Agradecimentos
+Agradeço ao Jikan API pela disponibilização dos dados de animes e ao WhoCanUse pela ferramenta de acessibilidade de cores.
