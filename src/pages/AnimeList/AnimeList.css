@@ -66,6 +66,11 @@
   } 
   
   @media (max-width: 580px) {
+    .anime-list-page{
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
     .anime-list{
       display: grid;
       grid-template-columns: 1fr;

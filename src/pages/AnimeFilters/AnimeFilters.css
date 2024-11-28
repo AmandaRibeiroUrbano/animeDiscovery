@@ -3,24 +3,24 @@
   margin: 0;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .form-anime-filters {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    background: linear-gradient(135deg, #1e293b, #334155);
-    border-radius: 15px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 30em;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
   }
   
   .form-anime-filters h1 {
@@ -43,7 +43,7 @@
 
   .modal-text {
     font-size: 1rem;
-    padding: 20px;
+    padding: 0 20px;
     font-weight: 200;
   }
 

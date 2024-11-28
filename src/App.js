@@ -1,6 +1,8 @@
 import Main from "./pages/Main";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { randomIntFromInterval } from "./utils/randomInterval";
+import { API_URL } from "./constants/APIURL";
 
 function App() {
   const [animes, setAnimes] = useState([]);
@@ -12,8 +14,8 @@ function App() {
 
   const getAnimes = async () => {
     try {
-      const randomPage = Math.floor(Math.random() * 10) + 1;
-      const response = await fetch(`https://api.jikan.moe/v4/anime?page=${randomPage}&sfw=true`);
+      const randomPage = randomIntFromInterval(1, 10);
+      const response = await fetch(`${API_URL}page=${randomPage}&sfw=true`);
       const data = await response.json();
       setAnimes(shuffleAnimes(data.data));
     } catch (error) {

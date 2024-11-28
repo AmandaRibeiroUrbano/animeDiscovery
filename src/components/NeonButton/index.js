@@ -1,9 +1,9 @@
 import "./NeonButton.css"
 
-const NeonButton = ({className="neon-button", action, content, fontSize = "1.5rem", color = "#18fbb3"}) =>{
+const NeonButton = ({classNameButton="neon-button", action, content, fontSize = "1.5rem", color = "#18fbb3"}) =>{
     return(
     <button 
-    className= {className} 
+    className= {classNameButton} 
     onClick={action}
     style={{
         fontSize: fontSize, 

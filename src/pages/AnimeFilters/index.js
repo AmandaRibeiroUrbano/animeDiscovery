@@ -250,7 +250,7 @@ const AnimeFilters = () => {
           </p>
           <div className="modal-button-container">
             <NeonButton
-            className="neon-button modal-neon-button"
+            classNameButton="neon-button modal-neon-button"
             fontSize="1rem"
             content="Confirmar"
             action={() => {
@@ -260,7 +260,7 @@ const AnimeFilters = () => {
               }}
             />
             <NeonButton
-            className="neon-button modal-neon-button"
+            classNameButton="neon-button modal-neon-button"
             fontSize="1rem"
             color="#bababa"
             content="Cancelar"

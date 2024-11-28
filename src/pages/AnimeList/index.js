@@ -6,8 +6,10 @@ import PageActions from "./components/PageActions";
 import PlaceholderCards from "./components/PlaceholderCards";
 import ErrorUI from "../../components/ErrorUI";
 import Footer from "../../components/Footer";
-
-const API_URL = "https://api.jikan.moe/v4/anime?";
+import { API_URL } from "../../constants/APIURL";
+import { delay } from "../../utils/time";
+import { randomIntFromInterval } from "../../utils/randomInterval";
+import { sanitizedBug } from "../../utils/sanitizing";
 
 const categories = {
   Cientista: [24, 29, 78, 18],
@@ -20,12 +22,6 @@ const categories = {
   Reflexivo: [1, 2, 8, 27],
   Esportivo: [30, 77, 54, 3],
 };
-
-const delay = (ms = 600) => new Promise((r) => setTimeout(r, ms));
-
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 function shuffleAndFilter(animes, count = 4) {
   const nonRepeatAnimes = animes.filter(
@@ -58,6 +54,9 @@ const AnimeList = () => {
       let fetchedAnimes = [];
 
       for (let i = 0; i < genre.length; i++) {
+        
+        await delay();
+
         const genreId = genre[i];
         let pageToLoad = isInitialLoad
           ? 1
@@ -77,8 +76,6 @@ const AnimeList = () => {
             "Content-Type": "application/json",
           },
         });
-
-        await delay();
 
         const data = await response.json();
         if (data.data) {
@@ -108,15 +105,6 @@ const AnimeList = () => {
     setError(null);
     fetchAnimes();
   };
-
-  const sanitizeRating = (rating) => {
-    return rating
-      .replace(/ /g, "%20")        
-      .replace(/&/g, "%26")         
-      .replace(/\(/g, "%28")        
-      .replace(/\)/g, "%29")        
-      .replace(/\+/g, "%2B");      
-  };
   
   useEffect(() => {
     fetchAnimes();
@@ -131,7 +119,7 @@ const AnimeList = () => {
         <div className="anime-list-container">
           <div className="anime-list">
             {visibleAnimes.map((anime) => {
-              const sanitizedRating = sanitizeRating(anime.rating);
+              const sanitizedRating = sanitizedBug(anime.rating);
               return (
                 <AnimeCards
                   key={anime.mal_id}
