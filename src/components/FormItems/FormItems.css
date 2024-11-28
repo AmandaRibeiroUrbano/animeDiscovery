@@ -1,0 +1,38 @@
+
+label {
+  font-size: .85rem;
+  color:var(--text-white);
+  margin: 0 0 8px 10px;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.react-select__control {
+  background: #1e293b;
+  border-radius: 8px;
+  border: 2px solid var(--green);
+  color: var(--text-white);
+  outline: none;
+}
+
+.react-select__control--is-focused {
+  border-color: var(--green);
+  box-shadow: 0 0 10px var(--green);
+}
+
+.react-select__placeholder {
+  color: #8a8a8a;
+}
+
+.react-select__option--is-focused {
+  background-color: var(--green);
+}

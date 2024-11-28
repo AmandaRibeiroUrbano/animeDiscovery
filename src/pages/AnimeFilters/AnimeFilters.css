@@ -1,0 +1,84 @@
+.anime-filters {
+  min-height: 100vh;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-anime-filters {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .form-anime-filters h1 {
+    color: var(--green);
+    font-family: "Orbitron", sans-serif;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  abbr {
+    text-decoration: none;
+  }
+
+  .modal-title {
+    color: #1e293b;
+    font-size: 1.3rem;
+  }
+
+  .icon18{
+    font-size: 3rem; 
+    vertical-align: middle;
+    margin-left: 1rem; 
+  }
+
+  .modal-text {
+    font-size: 1rem;
+    padding-bottom: 10px;
+    font-weight: 200;
+  }
+
+  .boldText{
+    font-weight: 500;
+  }
+
+  .modal-button-container{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .form-anime-filters {
+      padding: 15px 10px;
+      width: 100%;
+    }
+    .form-anime-filters h1 {
+      font-size: 1.2rem; 
+    }
+  }
