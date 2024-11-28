@@ -35,11 +35,6 @@
     text-decoration: none;
   }
 
-  .modal-title {
-    color: #1e293b;
-    font-size: 1.3rem;
-  }
-
   .icon18{
     font-size: 3rem; 
     vertical-align: middle;
@@ -48,8 +43,12 @@
 
   .modal-text {
     font-size: 1rem;
-    padding-bottom: 10px;
+    padding: 20px;
     font-weight: 200;
+  }
+
+  .modal-title{
+    padding: 20px;
   }
 
   .boldText{
@@ -57,6 +56,7 @@
   }
 
   .modal-button-container{
+    padding: 20px;
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
@@ -81,4 +81,39 @@
     .form-anime-filters h1 {
       font-size: 1.2rem; 
     }
+
+    .modal-title{
+      font-size: 1.1rem;
+    }
+
+    .modal-text {
+      font-size: 1rem;
+      padding-bottom: 5px;
+    }
+    .icon18{
+      font-size: 1.2rem;
+      padding-left: 0;
+    }
+
+  }
+
+  @media (max-width: 500px){
+    .modal-title{
+      font-size: 1rem;
+      padding: 5px;
+    }
+    .modal-text {
+      font-size: .8rem;
+      padding: 5px;
+    }
+    .modal-button-container{
+      padding: 0px;
+      justify-content: center;
+    }
+      .modal-neon-button {
+        padding: 4px 6px;
+        font-size: 8px;
+        transform: scale(.75);
+        transform: center; 
+      }
   }

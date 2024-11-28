@@ -23,10 +23,10 @@ import NeonButton from "../../components/NeonButton";
 const customStyles = {
   content: {
     display: "flex",
-    width: "500px",
+    width: "80%",
+    maxWidth: "500px",
     flexDirection: "column",
     gap: "20px",
-    padding: "40px",
     backgroundColor: "#1a0225",
     border: "none",
     top: "50%",
@@ -39,8 +39,9 @@ const customStyles = {
   },
   overlay: {
     backgroundColor: "rgba(0,0,0,0.5)",
-  },
+  }
 };
+
 
 const AnimeFilters = () => {
   let navigate = useNavigate();
@@ -236,7 +237,7 @@ const AnimeFilters = () => {
           style={customStyles}
           contentLabel="Confirmação de Maioridade"
         >
-          <h1>
+          <h1 className="modal-title">
             Confirmação de Maioridade
             <span className="icon18">
               <Md18UpRating />
@@ -249,6 +250,7 @@ const AnimeFilters = () => {
           </p>
           <div className="modal-button-container">
             <NeonButton
+            className="neon-button modal-neon-button"
             fontSize="1rem"
             content="Confirmar"
             action={() => {
@@ -258,6 +260,7 @@ const AnimeFilters = () => {
               }}
             />
             <NeonButton
+            className="neon-button modal-neon-button"
             fontSize="1rem"
             color="#bababa"
             content="Cancelar"
