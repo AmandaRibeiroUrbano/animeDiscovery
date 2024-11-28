@@ -59,8 +59,17 @@ const AnimeList = () => {
 
       for (let i = 0; i < genre.length; i++) {
         const genreId = genre[i];
-        let pageToLoad = isInitialLoad ? 1 : randomIntFromInterval(1, loadedpages[genreId]?.last_visible_page || 1);
-        let endPointApi = `${API_URL}${animeStatus === "true" ? `&status=complete` : ""}${safeToWork === "true" ? "&sfw=true" : ""}${rating === "all" ? "" : `&rating=${rating}`}&min_score=${avaliationParsed}&genres=${genreId}&page=${pageToLoad}&unapproved=false`;
+        let pageToLoad = isInitialLoad
+          ? 1
+          : randomIntFromInterval(
+              1,
+              loadedpages[genreId]?.last_visible_page || 1
+            );
+        let endPointApi = `${API_URL}${
+          animeStatus === "true" ? `&status=complete` : ""
+        }${safeToWork === "true" ? "&sfw=true" : ""}${
+          rating === "all" ? "" : `&rating=${rating}`
+        }&min_score=${avaliationParsed}&genres=${genreId}&page=${pageToLoad}&unapproved=false`;
 
         const response = await fetch(endPointApi, {
           headers: {
@@ -79,7 +88,7 @@ const AnimeList = () => {
         if (isInitialLoad && data.pagination) {
           setLoadedpages((prev) => ({
             ...prev,
-            [genreId]: { last_visible_page: data.pagination.last_visible_page }
+            [genreId]: { last_visible_page: data.pagination.last_visible_page },
           }));
         }
       }
@@ -87,8 +96,10 @@ const AnimeList = () => {
     } catch (error) {
       console.error("Erro ao buscar os dados da API:", error);
       setLoading(false);
-      setError("Houve um problema ao buscar os animes. Por favor, tente novamente.");
-    }finally{
+      setError(
+        "Houve um problema ao buscar os animes. Por favor, tente novamente."
+      );
+    } finally {
       setLoading(false);
     }
   }
@@ -98,6 +109,15 @@ const AnimeList = () => {
     fetchAnimes();
   };
 
+  const sanitizeRating = (rating) => {
+    return rating
+      .replace(/ /g, "%20")        
+      .replace(/&/g, "%26")         
+      .replace(/\(/g, "%28")        
+      .replace(/\)/g, "%29")        
+      .replace(/\+/g, "%2B");      
+  };
+  
   useEffect(() => {
     fetchAnimes();
   }, []);
@@ -106,32 +126,35 @@ const AnimeList = () => {
     <div className="anime-list-page">
       {loading && <PlaceholderCards count={4} />}
       {error && <ErrorUI error={error} onRetry={handleRetry} />}
-
+  
       {!loading && !error && (
         <div className="anime-list-container">
           <div className="anime-list">
-            {visibleAnimes.map((anime) => (
-              <AnimeCards
-                key={anime.mal_id}
-                imgSrc={anime.images.jpg.large_image_url}
-                imgAlt={anime.title}
-                imgRating={`${process.env.PUBLIC_URL}/images/${anime.rating}.png`}
-                altImgRating={anime.rating}
-                title={anime.title}
-                score={anime.score || "N/A"}
-                duration={
-                  anime.type === "Movie"
-                    ? "Filme"
-                    : `Nº de episódios: ${anime.episodes || "Em lançamento"}`
-                }
-                linkTrailer={anime.trailer?.url}
-                trailerClassName={
-                  anime.trailer?.url ? "anime-card-link" : "disable-button"
-                }
-                linkMyAnimeList={`https://myanimelist.net/anime/${anime.mal_id}`}
-                sinopseClassName="anime-card-link"
-              />
-            ))}
+            {visibleAnimes.map((anime) => {
+              const sanitizedRating = sanitizeRating(anime.rating);
+              return (
+                <AnimeCards
+                  key={anime.mal_id}
+                  imgSrc={anime.images.jpg.large_image_url}
+                  imgAlt={anime.title}
+                  imgRating={`${process.env.PUBLIC_URL}/images/${sanitizedRating}.png`}
+                  altImgRating={anime.rating}
+                  title={anime.title}
+                  score={anime.score || "N/A"}
+                  duration={
+                    anime.type === "Movie"
+                      ? "Filme"
+                      : `Nº de episódios: ${anime.episodes || "Em lançamento"}`
+                  }
+                  linkTrailer={anime.trailer?.url}
+                  trailerClassName={
+                    anime.trailer?.url ? "anime-card-link" : "disable-button"
+                  }
+                  linkMyAnimeList={`https://myanimelist.net/anime/${anime.mal_id}`}
+                  sinopseClassName="anime-card-link"
+                />
+              );
+            })}
           </div>
           <PageActions
             newFilters={() => navigate("/anime_filters")}
@@ -142,6 +165,6 @@ const AnimeList = () => {
       <Footer />
     </div>
   );
-};
+};  
 
 export default AnimeList;
