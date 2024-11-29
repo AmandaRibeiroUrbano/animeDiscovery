@@ -6,6 +6,7 @@
   }
 
   html, body {
+    background-color: #562055;
     background: linear-gradient(135deg, #1a0225, #3b1d40, #562055);
     background-attachment: fixed;
     display: flex;

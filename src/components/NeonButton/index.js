@@ -1,8 +1,9 @@
 import "./NeonButton.css"
 
-const NeonButton = ({classNameButton="neon-button", action, content, fontSize = "1.5rem", color = "#18fbb3"}) =>{
+const NeonButton = ({classNameButton="neon-button", autoFocus=false, action, content, fontSize = "1.5rem", color = "#18fbb3"}) =>{
     return(
-    <button 
+    <button
+    autoFocus={autoFocus}
     className= {classNameButton} 
     onClick={action}
     style={{

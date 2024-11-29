@@ -39,9 +39,8 @@ const customStyles = {
   },
   overlay: {
     backgroundColor: "rgba(0,0,0,0.5)",
-  }
+  },
 };
-
 
 const AnimeFilters = () => {
   let navigate = useNavigate();
@@ -167,6 +166,13 @@ const AnimeFilters = () => {
     setChecked(isChecked);
   };
 
+  const handleCheckboxKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleChange({target: { checked: !checked }})
+    }
+  };
+
   return (
     <div className="anime-filters">
       <form
@@ -212,7 +218,12 @@ const AnimeFilters = () => {
 
         <FormControlLabel
           control={
-            <Checkbox size="small" checked={checked} onChange={handleChange} />
+            <Checkbox
+              size="small"
+              checked={checked}
+              onChange={handleChange}
+              onKeyDown={handleCheckboxKeyDown}
+            />
           }
           label=<p>
             {" "}
@@ -244,27 +255,29 @@ const AnimeFilters = () => {
             </span>
           </h1>
           <p className="modal-text">
-            Ao desmarcar esta opção, você confirma que é <span className="boldText">maior de 18 anos</span> e está
-            ciente de que alguns conteúdos podem não ser apropriados para todos
-            os públicos.
+            Ao desmarcar esta opção, você confirma que é{" "}
+            <span className="boldText">maior de 18 anos</span> e está ciente de
+            que alguns conteúdos podem não ser apropriados para todos os
+            públicos.
           </p>
           <div className="modal-button-container">
             <NeonButton
-            classNameButton="neon-button modal-neon-button"
-            fontSize="1rem"
-            content="Confirmar"
-            action={() => {
+              classNameButton="neon-button modal-neon-button"
+              fontSize="1rem"
+              content="Confirmar"
+              action={() => {
                 setConfirmedSfw(true);
                 setChecked(false);
                 closeModal();
               }}
             />
             <NeonButton
-            classNameButton="neon-button modal-neon-button"
-            fontSize="1rem"
-            color="#bababa"
-            content="Cancelar"
-            action={closeModal}
+              autoFocus={true}
+              classNameButton="neon-button modal-neon-button"
+              fontSize="1rem"
+              color="#bababa"
+              content="Cancelar"
+              action={closeModal}
             />
           </div>
         </Modal>

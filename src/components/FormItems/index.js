@@ -1,7 +1,10 @@
 import "./FormItems.css";
 import Select from "react-select";
+import { useState } from "react";
 
-const FormItems = ({ label, value, changeOption, options}) => {
+const FormItems = ({ label, labelId, value, changeOption, options }) => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
   const customStyles = {
     control: (base, state) => ({
       ...base,
@@ -15,7 +18,7 @@ const FormItems = ({ label, value, changeOption, options}) => {
       cursor: "pointer",
       "&:hover": {
         border: "2px solid #18fbb3",
-      }
+      },
     }),
     option: (base, { isFocused }) => ({
       ...base,
@@ -30,7 +33,7 @@ const FormItems = ({ label, value, changeOption, options}) => {
     singleValue: (base) => ({
       ...base,
       color: "#fff",
-      fontSize: "0.85rem"
+      fontSize: "0.85rem",
     }),
     menu: (base) => ({
       ...base,
@@ -41,13 +44,23 @@ const FormItems = ({ label, value, changeOption, options}) => {
     placeholder: (base) => ({
       ...base,
       color: "#8a8a8a",
-      fontSize: "0.8rem"
-    })
+      fontSize: "0.8rem",
+    }),
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setMenuIsOpen(true);
+    }
+  };
+
 
   return (
     <div className="select-container">
-      <label>{label}</label>
+      <label id={labelId} htmlFor={labelId}>
+        {label}
+      </label>
       <Select
         placeholder="Escolha uma das opções..."
         options={options}
@@ -56,6 +69,12 @@ const FormItems = ({ label, value, changeOption, options}) => {
         styles={customStyles}
         isSearchable
         required
+        menuIsOpen={menuIsOpen}
+        onMenuOpen={() => setMenuIsOpen(true)}
+        onMenuClose={() => setMenuIsOpen(false)}
+        aria-labelledby={labelId}
+        aria-live="polite"
+        onKeyDown={handleKeyDown}
       />
     </div>
   );
