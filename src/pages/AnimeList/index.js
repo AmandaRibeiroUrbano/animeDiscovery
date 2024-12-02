@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import AnimeCards from "./components/AnimeCards";
 import PageActions from "./components/PageActions";
 import PlaceholderCards from "./components/PlaceholderCards";
-import ErrorUI from "../../components/ErrorUI";
-import Footer from "../../components/Footer";
-import { API_URL } from "../../constants/APIURL";
-import { delay } from "../../utils/time";
-import { randomIntFromInterval } from "../../utils/randomInterval";
-import { sanitizedBug } from "../../utils/sanitizing";
+import ErrorUI from "components/ErrorUI";
+import Footer from "components/Footer";
+import { API_URL } from "constants/APIURL";
+import { delay } from "utils/time";
+import { randomIntFromInterval } from "utils/randomInterval";
 
 const categories = {
   Cientista: [24, 29, 78, 18],
@@ -119,29 +118,9 @@ const AnimeList = () => {
         <div className="anime-list-container">
           <div className="anime-list">
             {visibleAnimes.map((anime) => {
-              const sanitizedRating = sanitizedBug(anime.rating);
-              return (
-                <AnimeCards
-                  key={anime.mal_id}
-                  imgSrc={anime.images.jpg.large_image_url}
-                  imgAlt={anime.title}
-                  imgRating={`${process.env.PUBLIC_URL}/images/${sanitizedRating}.png`}
-                  altImgRating={anime.rating}
-                  title={anime.title}
-                  score={anime.score || "N/A"}
-                  duration={
-                    anime.type === "Movie"
-                      ? "Filme"
-                      : `Nº de episódios: ${anime.episodes || "Em lançamento"}`
-                  }
-                  linkTrailer={anime.trailer?.url}
-                  trailerClassName={
-                    anime.trailer?.url ? "anime-card-link" : "disable-button"
-                  }
-                  linkMyAnimeList={`https://myanimelist.net/anime/${anime.mal_id}`}
-                  sinopseClassName="anime-card-link"
-                />
-              );
+              return(
+                <AnimeCards anime = {anime} key={anime.mal_id}/>
+              )
             })}
           </div>
           <PageActions

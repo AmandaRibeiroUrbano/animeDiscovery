@@ -4,8 +4,8 @@ import "./Main.css";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router";
-import Footer from "../../components/Footer";
-import NeonButton from "../../components/NeonButton";
+import Footer from "components/Footer";
+import NeonButton from "components/NeonButton";
 
 
 const Main = ({ animeImages }) => {

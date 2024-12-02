@@ -1,8 +1,8 @@
-import Main from "./pages/Main";
-import "./App.css";
+import Main from "pages/Main";
+import "App.css";
 import { useEffect, useState } from "react";
-import { randomIntFromInterval } from "./utils/randomInterval";
-import { API_URL } from "./constants/APIURL";
+import { randomIntFromInterval } from "utils/randomInterval";
+import { API_URL } from "constants/APIURL";
 
 function App() {
   const [animes, setAnimes] = useState([]);

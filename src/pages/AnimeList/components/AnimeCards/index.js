@@ -1,30 +1,19 @@
+import { sanitizedBug } from "utils/sanitizing";
 import "./AnimeCards.css";
 
-const AnimeCards = (props) => {
-  const {
-    title,
-    imgSrc,
-    imgAlt,
-    imgRating,
-    altImgRating,
-    score,
-    duration,
-    linkTrailer,
-    trailerClassName,
-    linkMyAnimeList,
-    sinopseClassName
-  } = props;
+const AnimeCards = ({anime}) => {
 
-  const isLongTitle = title.length > 30;
+  const isLongTitle = anime.title.length > 30;
+  const sanitizedRating = sanitizedBug(anime.rating);
 
   return (
     <div className="anime-card">
       <div className="anime-card-images">
-        <img className="image-anime" src={imgSrc} alt={imgAlt} />
+        <img className="image-anime" src={anime.images.jpg.large_image_url} alt={anime.title} />
         <img
           className="image-rating"
-          src={imgRating}
-          alt={altImgRating}
+          src={`${process.env.PUBLIC_URL}/images/${sanitizedRating}.png`}
+          alt={anime.rating}
           tabIndex="0"
         />
       </div>
@@ -33,26 +22,28 @@ const AnimeCards = (props) => {
           className={`anime-card-title ${isLongTitle ? "long-title" : ""}`}
           tabIndex="0"
         >
-          {props.title}
+          {anime.title}
         </h3>
         <div className="anime-card-descriptions" tabIndex="0">
-          <p className="anime-card-rating">Nota: {score}</p>
-          <p className="anime-card-length">{duration}</p>
+          <p className="anime-card-rating">Nota: {anime.score || "N/A"}</p>
+          <p className="anime-card-length">{anime.type === "Movie"
+                      ? "Filme"
+                      : `Nº de episódios: ${anime.episodes || "Em lançamento"}`}</p>
         </div>
         <div className="anime-card-links">
           <a
-            href={linkTrailer}
+            href={anime.trailer?.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={trailerClassName}
+            className={anime.trailer?.url ? "anime-card-link" : "disable-button"}
           >
             Trailer
           </a>
           <a
-            href={linkMyAnimeList}
+            href={`https://myanimelist.net/anime/${anime.mal_id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className={sinopseClassName}
+            className="anime-card-link"
           >
             +info
           </a>

@@ -1,8 +1,8 @@
 import "./AnimeFilters.css";
 import Modal from "react-modal";
-import FormItems from "../../components/FormItems";
+import FormItems from "components/FormItems";
 import { useState } from "react";
-import Footer from "../../components/Footer";
+import Footer from "components/Footer";
 import { Checkbox } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import {
